@@ -1,3 +1,17 @@
+import subprocess
+import sys
+
+# Función para instalar un paquete si no está disponible
+def instalar_paquete(paquete):
+    try:
+        __import__(paquete)
+    except ImportError:
+        print(f"Instalando {paquete}...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", paquete])
+
+# Instalar networkx si no está disponible
+instalar_paquete("networkx")
+
 #Libreria que hace manejo de grafos, permite calcular la mejor
 import networkx as nx
 
